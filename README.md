@@ -35,8 +35,10 @@ Se utiliza Swagger para documentar la API, de esta forma se ordenan los endpoint
 Para poner en funcionamiento el sistema necesita hacer lo siguiente:  
 1. Primeramente creará un usuario en su correspondiente endpoint, este no necesitará de autenticación la primera vez.  
 2. Después se dirigirá al endpoint de auth, en el cual ingresará sus credenciales (email, password), y si todo salio bien le devolverá un token.
-3. Copiará el token recibido y dará click en el boton de authorize (tambien puede hacerlo dando click en los candaditos que hay en cada endpoint). 
+3. Copiará el token recibido y dará click en el boton de authorize (tambien puede hacerlo dando click en los candaditos que hay en cada endpoint).  
+  
 ![Muestra del botón](/img/img-auth.png)  
 4. Seguido de esto ingresará el token copiado en el campo que se muestra a continuación:  
+  
 ![Muestra autenticación](/img/img-auth-2.png)  
 5. Con esto hecho solo de click en "Authorize" y podrá probar la aplicación. Tome en cuenta que este procesor tendrá que repetirlo cada que recargue la página.
