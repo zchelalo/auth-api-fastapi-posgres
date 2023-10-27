@@ -23,10 +23,10 @@ Es posible que según la versión de docker que tenga o donde lo tenga, tendrá 
 docker-compose up
 ``` 
   
-Despues de que se haya hecho la build y esten en ejecución los tres servicios, es momento de probar la API en la URL *http://localhost:8000/* en la cual esta alojado el servidor.
+Despues de que se haya hecho la build y esten en ejecución los tres servicios, es momento de probar la API en la URL [http://localhost:8000/](http://localhost:8000/) en la cual esta alojado el servidor.
   
 ## **Documentación:**  
-Para poder ver la documentación a la vez que probar la API REST nos podremos dirigir a *http://localhost:8000/docs* una vez que nuestro servidor este activo.  
+Para poder ver la documentación a la vez que probar la API REST nos podremos dirigir a [http://localhost:8000/docs](http://localhost:8000/docs) una vez que nuestro servidor este activo.  
   
 En esta ruta se podrán ver todos los endpoints de la API y podremos probar cada uno de ellos desde ahí mismo, siendo esto muy útil a la hora de testear.  
   
@@ -43,4 +43,4 @@ Para poner en funcionamiento el sistema necesita hacer lo siguiente:
   
 ![Muestra autenticación](/img/img-auth-2.png)  
   
-5. Con esto hecho solo de click en "Authorize" y podrá probar la aplicación. Tome en cuenta que este procesor tendrá que repetirlo cada que recargue la página.
+5. Con esto hecho solo de click en "Authorize" y podrá probar la aplicación. Tome en cuenta que este proceso tendrá que repetirlo cada que recargue la página.
