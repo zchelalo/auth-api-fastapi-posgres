@@ -5,4 +5,4 @@ home = APIRouter()
 
 @home.get('/', tags=['home'])
 def message():
-  return HTMLResponse('<h1>Hola mundo</h1>')
+  return HTMLResponse('<h1>Hola mundo !</h1>')
