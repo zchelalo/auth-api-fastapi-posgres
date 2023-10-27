@@ -17,6 +17,19 @@ class User(BaseModel):
     }
   }
 
+class UserAuth(BaseModel):
+  email: str = Field(min_length=1, max_length=100)
+  password: str = Field(min_length=1, max_length=150)
+
+  model_config = {
+    "json_schema_extra" : {
+      "example": {
+          "email": "panchito@email.com",
+          "password": "Panchito_1928"
+      }
+    }
+  }
+
 class UserUpdate(BaseModel):
   name: Optional[constr(min_length=1, max_length=100)] = None
   email: Optional[constr(min_length=1, max_length=100)] = None

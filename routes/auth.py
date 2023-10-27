@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, status
 from starlette.status import HTTP_401_UNAUTHORIZED, HTTP_404_NOT_FOUND
 from utils.jwt_manager import create_token
-from schemas.users import User as UserSchema
+from schemas.users import UserAuth as UserAuthSchema
 from services.users import UserService
 from config.database import Session
 from passlib.hash import sha256_crypt
@@ -13,7 +13,7 @@ auth_router = APIRouter()
   status_code=status.HTTP_200_OK,
   tags=['auth']
 )
-def login(user: UserSchema) -> dict:
+def login(user: UserAuthSchema) -> dict:
   email = user.email
   password = user.password
 
