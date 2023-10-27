@@ -13,7 +13,7 @@ auth_router = APIRouter()
   status_code=status.HTTP_200_OK,
   tags=['auth']
 )
-def login(user: UserSchema) -> str:
+def login(user: UserSchema) -> dict:
   email = user.email
   password = user.password
 
@@ -25,6 +25,6 @@ def login(user: UserSchema) -> str:
 
   if sha256_crypt.verify(password, result.password):
     token: str = create_token(user.model_dump())
-    return token
+    return {'token': token}
   else:
     raise HTTPException(status_code=HTTP_401_UNAUTHORIZED, detail={'message': 'Credenciales incorrectas'})

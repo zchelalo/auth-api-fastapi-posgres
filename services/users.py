@@ -17,6 +17,10 @@ class UserService():
     result = self.db.query(UserModel).where(UserModel.email == email).one_or_none()
     return result
   
+  def get_user_random(self):
+    result = self.db.query(UserModel).limit(1).one_or_none()
+    return result
+  
   def create_user(self, user: UserSchema):
     new_user = UserModel(**user.model_dump())
     self.db.add(new_user)

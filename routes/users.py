@@ -4,7 +4,7 @@ from typing import List
 from middlewares.jwt_bearer import JWTBearer
 from config.database import Session, engine, Base
 from services.users import UserService
-from schemas.users import User as UserSchema
+from schemas.users import User as UserSchema, UserUpdate as UserUpdateSchema
 from passlib.hash import sha256_crypt
 
 user_router = APIRouter()
@@ -56,6 +56,9 @@ def get_user(id: int) -> UserSchema:
     dependencies=[Depends(JWTBearer())]
   )
 def create_user(user: UserSchema) -> UserSchema:
+  if user.id:
+    user.id = None
+    
   password = sha256_crypt.hash(user.password)
   user.password = password
   db = Session()
@@ -72,11 +75,15 @@ def create_user(user: UserSchema) -> UserSchema:
     response_model=UserSchema,
     dependencies=[Depends(JWTBearer())]
   )
-def update_user(id: int, user_update: UserSchema) -> UserSchema:
+def update_user(id: int, user_update: UserUpdateSchema) -> UserSchema:
   db = Session()
   user = UserService(db).get_user(id)
   if not user:
     raise HTTPException(status_code=HTTP_404_NOT_FOUND, detail={'message': 'No se encontró el usuario'})
+  
+  if user_update.password:
+    password = sha256_crypt.hash(user_update.password)
+    user_update.password = password
   
   result = UserService(db).update_user(user, user_update)
 

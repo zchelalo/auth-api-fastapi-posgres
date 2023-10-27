@@ -4,7 +4,7 @@ from typing import List
 from middlewares.jwt_bearer import JWTBearer
 from config.database import Session, engine, Base
 from services.movies import MovieService
-from schemas.movies import Movie as MovieSchema
+from schemas.movies import Movie as MovieSchema, MovieUpdate as MovieUpdateSchema
 
 movie_router = APIRouter()
 
@@ -75,6 +75,9 @@ def get_movies_by(category: str = Query(None, description="Filtrar por categorí
     dependencies=[Depends(JWTBearer())]
   )
 def create_movie(movie: MovieSchema) -> MovieSchema:
+  if movie.id:
+    movie.id = None
+
   db = Session()
   new_movie = MovieService(db).create_movie(movie)
   return new_movie
@@ -89,7 +92,7 @@ def create_movie(movie: MovieSchema) -> MovieSchema:
     response_model=MovieSchema,
     dependencies=[Depends(JWTBearer())]
   )
-def update_movie(id: int, movie_update: MovieSchema) -> MovieSchema:
+def update_movie(id: int, movie_update: MovieUpdateSchema) -> MovieSchema:
   db = Session()
   movie = MovieService(db).get_movie(id)
   if not movie:
